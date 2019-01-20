@@ -14,7 +14,7 @@
               <td>{{product.name}}</td>
               <td>${{product.price}}</td>
               <td><router-link :to="'/admin/edit/'+product._id"><i class="fa fa-pencil-square-o"></i></router-link></td>
-              <td><a @click="deleteProduct(product._id)"><i class="fa fa-trash"></i></a></td>
+              <td><a @click="deleteProduct(product)"><i class="fa fa-trash"></i></a></td>
             </tr>
             </tbody>
           </table>
@@ -39,7 +39,7 @@
       }
     },
     methods: {
-      deleteProduct (id) {
+      deleteProduct (product) {
           const swalWithBootstrapButtons = this.$swal.mixin({
               confirmButtonClass: 'btn btn-success',
               cancelButtonClass: 'btn btn-danger',
@@ -56,7 +56,7 @@
               reverseButtons: true
           }).then((result) => {
               if (result.value) {
-                  this.$store.dispatch('removeProduct', id)
+                  this.$store.dispatch('removeProduct', product)
                   swalWithBootstrapButtons(
                       'Deleted!',
                       'Your file has been deleted.',

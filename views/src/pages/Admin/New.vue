@@ -12,8 +12,9 @@
     },
     methods: {
       addProduct (model) {
-        console.log('model', model)
-        this.$store.dispatch('addProduct', model)
+        this.$store.dispatch('addProduct', model).then(()=>{
+            this.$router.push('/admin');
+        })
       }
     },
     components: {

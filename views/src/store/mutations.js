@@ -45,5 +45,15 @@ export const productMutations = {
     [ADD_PRODUCT_SUCCESS](state, payload){
         state.showLoader = false;
         this.product = payload;
+        state.products.push(payload)
+    },
+    [REMOVE_PRODUCT](state, payload){
+        state.showLoader = false;
+    },
+    [REMOVE_PRODUCT_SUCCESS](state, payload){
+        state.showLoader = false;
+        state.products = state.products.filter(e => {
+         return  e._id !== payload._id
+        })
     }
 }

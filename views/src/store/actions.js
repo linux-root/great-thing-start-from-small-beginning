@@ -60,10 +60,10 @@ export const productActions = {
             commit(UPDATE_PRODUCT_SUCCESS, response.data)
         })
     },
-    removeProduct({commit}, payload) {
+    removeProduct({commit}, product) {
         commit(REMOVE_PRODUCT)
-        axios.delete(`${API_BASE}/products/${payload}`, payload).then(response => {
-            commit(REMOVE_PRODUCT_SUCCESS, response.data)
+        axios.delete(`${API_BASE}/products/${product._id}`).then(response => {
+            commit(REMOVE_PRODUCT_SUCCESS, product)
         })
     }
 }
